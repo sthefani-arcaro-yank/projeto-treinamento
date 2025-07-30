@@ -1,0 +1,13 @@
+
+Iniciando aplicação: ${AnsiColor.BLUE} Treinamento Robo ${AnsiColor.DEFAULT}
+Descrição: ${AnsiColor.BLUE} projeto feito no treinamento de estágio em desenvolvimento ${AnsiColor.DEFAULT}
+
+${AnsiColor.BLUE}  __   __          _     ____  _             _ _
+${AnsiColor.BLUE}  \ \ / /_ _ _ __ | | __/ ___|| |_ _   _  __| (_) ___
+${AnsiColor.BLUE}   \ V / _` | '_ \| |/ /\___ \| __| | | |/ _` | |/ _ \
+${AnsiColor.BLUE}    | | (_| | | | |   <  ___) | |_| |_| | (_| | | (_) |
+${AnsiColor.BLUE}    |_|\__,_|_| |_|_|\_\|____/ \__|\__,_|\__,_|_|\___/
+${AnsiColor.DEFAULT}
+#######################################################
+# ${AnsiColor.BLUE}              Powered by Yank Solutions             ${AnsiColor.DEFAULT}#
+#######################################################

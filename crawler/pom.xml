@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>br.com.yanksolutions</groupId>
+    <artifactId>treinamento-robo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>crawler</artifactId>
+  <properties>
+    <maven.compiler.target>24</maven.compiler.target>
+    <maven.compiler.source>24</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <finalName>treinamento-robo</finalName>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>br.com.yanksolutions</groupId>
+      <artifactId>commons</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>br.com.yanksolutions</groupId>
+      <artifactId>domain</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../resources</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <finalName>${finalName}</finalName>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>generate-bat</id>
+            <phase>install</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo file="${project.build.directory}/${finalName}.bat">@echo off
+title Treinamento Robo - projeto feito no treinamento de estágio em desenvolvimento
+java -jar ${finalName}.jar</echo>
+              </target>
+            </configuration>
+          </execution>
+          <execution>
+            <id>generate-start-script</id>
+            <phase>install</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo file="${project.build.directory}/${finalName}-startup.sh">#!/bin/bash
+#caso precise tirar print
+#xvfb-run -a --server-args="-screen 0 1024x720x24" java -jar ${finalName}.jar &amp;
+java -jar ${finalName}.jar &amp;</echo>
+              </target>
+            </configuration>
+          </execution>
+          <execution>
+            <id>generate-stop-script</id>
+            <phase>install</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo file="${project.build.directory}/${finalName}-shutdown.sh">#!/bin/bash
+pids=$(ps aux | grep ${finalName} | awk '{print $2}')
+for pid in $pids; do
+    kill -9 $pid
+done</echo>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.9.1.2184</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>

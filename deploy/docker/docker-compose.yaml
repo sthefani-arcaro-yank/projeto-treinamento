@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  treinamento-robo:
+    container_name: treinamento-robo
+    image: treinamento-robo:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      TZ: America/Sao_Paulo
+    volumes:
+      # volume para consultar os logs localmente
+      - ./logs:/app/treinamento-robo/logs
+      # volume para trocar o jar sem precisar recriar a imagem
+      - ./jar:/app/treinamento-robo/jar

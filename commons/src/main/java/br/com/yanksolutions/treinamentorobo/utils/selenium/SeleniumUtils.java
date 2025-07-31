@@ -9,7 +9,6 @@ import br.com.yanksolutions.commons.utils.ArquivosUtils;
 import br.com.yanksolutions.commons.utils.WaitUtils;
 import br.com.yanksolutions.treinamentorobo.constant.SeleniumConstant;
 import br.com.yanksolutions.treinamentorobo.exception.SeleniumException;
-import br.com.yanksolutions.treinamentorobo.utils.selenium.undetected.ChromeDriverBuilder;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FileUtils;
@@ -60,10 +59,7 @@ public class SeleniumUtils extends ChromeDriverProcessID {
 
 
     public void initDriver(WebDriverConfig config) {
-        if (config.isUndetected())
-            initUndetectedChromeDriver(config);
-        else
-            initChormeDriver(config);
+        initChormeDriver(config);
     }
 
     private void initChormeDriver(WebDriverConfig config) {
@@ -102,45 +98,6 @@ public class SeleniumUtils extends ChromeDriverProcessID {
                 closeDriver();
                 if (Objects.nonNull(chromeDriverService))
                     chromeDriverService.stop();
-            }
-        }
-        throw new SeleniumException(SeleniumConstant.ERRO_AO_INSTANCIA_WEBDRIVER);
-    }
-
-    private void initUndetectedChromeDriver(WebDriverConfig config) {
-        int tentativas = 2;
-        while (--tentativas >= 0) {
-            ChromeDriverService service = null;
-            try {
-                ChromeOptions options = getChromeOptions(config);
-                String userHome = System.getProperty("user.home");
-                Path cacheDirectory = Paths.get(userHome, ".cache");
-
-                String path;
-
-                if (config.isWebDriverManager()) {
-                    String driverPath = cacheDirectory + "/selenium/chromedriver";
-                    List<File> fileList = ArquivosUtils.getFileList(driverPath, true, FileSortingStrategy.LAST_MODIFIED_DESC);
-                    path = fileList.get(0).getAbsolutePath();
-                } else
-                    path = WebDriverManager.chromedriver().getDownloadedDriverPath();
-
-                service = new ChromeDriverService.Builder()
-                        .usingDriverExecutable(new File(path))
-                        .usingAnyFreePort()
-                        .build();
-                WebDriver chromeDriver = new ChromeDriverBuilder().build(options, path);
-                driverLocal.set(chromeDriver);
-
-                if (!config.isHeadless())
-                    driverLocal.get().manage().window().maximize();
-                return;
-            } catch (Exception e) {
-                LOGGER.error(SeleniumConstant.ERRO_AO_INSTANCIA_WEBDRIVER, e);
-                WaitUtils.waitSegundos(5);
-                closeDriver();
-            } finally {
-                service.close();
             }
         }
         throw new SeleniumException(SeleniumConstant.ERRO_AO_INSTANCIA_WEBDRIVER);
@@ -1331,6 +1288,17 @@ public class SeleniumUtils extends ChromeDriverProcessID {
             isWait.until(ExpectedConditions.presenceOfElementLocated(element));
         } catch (Exception e) {
             throw new SeleniumException(SeleniumConstant.ERRO_AO_ESPERAR_O_ELEMENTO, e);
+        }
+    }
+
+    public boolean waitPresenceByXPathBoolean(String xpath, int segundos) {
+        try {
+            Duration durationInSecunds = Duration.ofSeconds(segundos);
+            WebDriverWait isWait = new WebDriverWait(driverLocal.get(), durationInSecunds);
+            isWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 

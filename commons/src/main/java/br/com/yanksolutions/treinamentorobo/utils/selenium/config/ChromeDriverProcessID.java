@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 @Component
 public class ChromeDriverProcessID {
 
-    private static final Logger LOGGER = LogManager.getLogger("treinamento-robo");
+    private static final Logger LOGGER = LogManager.getLogger("basic-selenium");
     private static final String PATH = "/bin/sh";
 
     protected int getChromeDriverProcessID(int aPort) {

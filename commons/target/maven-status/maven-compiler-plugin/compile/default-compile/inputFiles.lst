@@ -1,0 +1,15 @@
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\constant\SeleniumConstant.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\exception\BusinessException.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\exception\CrawlerException.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\exception\SeleniumException.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\exception\WsException.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\healthcheck\HealthCheckStatus.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\healthcheck\HealthCheckUtils.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\utils\selenium\config\ChromeDriverProcessID.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\utils\selenium\config\VnpSeverSelector.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\utils\selenium\config\WebDriverConfig.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\utils\selenium\SeleniumUtils.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\utils\selenium\undetected\ChromeDriverBuilder.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\utils\selenium\undetected\Patcher.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\utils\selenium\undetected\SysUtil.java
+C:\Users\User\Documents\sthefani-arcaro\estudos\treinamento\treinamento-robo\commons\src\main\java\br\com\yanksolutions\treinamentorobo\utils\selenium\undetected\UndetectedChromeDriver.java

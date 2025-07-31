@@ -11,7 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class CapturaNicksPage {
+
+public class CapturaDadosPage {
     private WebDriver browser;
     private static final String URL = "https://www.4devs.com.br/gerador_de_texto_lorem_ipsum";
 
@@ -21,7 +22,7 @@ public class CapturaNicksPage {
     }
 
 
-    public CapturaNicksPage(){
+    public CapturaDadosPage(){
         System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
          this.browser = new ChromeDriver();
     }
@@ -54,7 +55,14 @@ public class CapturaNicksPage {
 
     public void submiteBotao(String elemento){
         browser.findElement(By.xpath(elemento)).click();
+
     }
+
+    public void selecionarPontuacao(boolean pontuacao) {
+        String id = pontuacao ? "pontuacao_sim" : "pontuacao_nao";
+        browser.findElement(By.id(id)).click();
+    }
+
 
 
 }

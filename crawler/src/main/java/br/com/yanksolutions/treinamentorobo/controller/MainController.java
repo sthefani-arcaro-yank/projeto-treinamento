@@ -8,20 +8,22 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 
+import javax.annotation.PostConstruct;
+
 @RequiredArgsConstructor
 @EnableScheduling
 @Controller
 public class MainController {
     private final RenomearOuExcluirFlow renomearOuExcluirFlow;
     private final Logger LOGGER = LogManager.getLogger(this.getClass().getName());
+    private CapturaDados capturaDados = new CapturaDados();
 
-    @Scheduled(fixedDelay = 1000 * 60)
+    //@Scheduled(fixedDelay = 1000 * 60)
+    @PostConstruct
     public void init() {
         try{
             LOGGER.info("#### Iniciando execução ####");
-            renomearOuExcluirFlow.seleniumExemploUndetected();
-//            renomearOuExcluirFlow.seleniumExemplo();
-//            renomearOuExcluirFlow.seleniumExemploVpn();
+           // capturaDados.run();
             LOGGER.info("#### Execução finalizada ####");
         } catch (Exception e) {
             LOGGER.error("Erro na execução", e);

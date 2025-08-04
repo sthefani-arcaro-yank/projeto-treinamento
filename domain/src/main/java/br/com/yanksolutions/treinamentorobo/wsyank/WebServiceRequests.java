@@ -4,8 +4,6 @@ package br.com.yanksolutions.treinamentorobo.wsyank;
 import br.com.yanksolutions.commons.utils.WaitUtils;
 import br.com.yanksolutions.dmlws.DmlWs;
 import br.com.yanksolutions.dmlws.exeception.WsException;
-
-
 import br.com.yanksolutions.treinamentorobo.config.WsConfig;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;

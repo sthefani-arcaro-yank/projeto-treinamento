@@ -1,7 +1,7 @@
-package br.com.yanksolutions.treinamentorobo.controller;
+package br.com.yanksolutions.treinamentorobo.flow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import br.com.yanksolutions.treinamentorobo.controller.model.Usuario;
+import br.com.yanksolutions.treinamentorobo.model.Usuario;
 import br.com.yanksolutions.treinamentorobo.controller.pages.CapturaDadosPage;
 import br.com.yanksolutions.treinamentorobo.wsyank.WebServiceRequests;
 import org.springframework.boot.CommandLineRunner;
@@ -9,8 +9,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+// projeto em selenium
+
 @Component
-public class CapturaDados implements CommandLineRunner {
+public class CapturaDados{
 
     @Autowired
     private CapturaDadosPage capturaDados;
@@ -21,8 +23,8 @@ public class CapturaDados implements CommandLineRunner {
     @Value("${robo.tabela}")
     private String tabela;
 
-    @Override
-    public void run(String... args) {
+
+    public void capturaDadosInit() {
         System.out.println("entra em captura dados");
         try {
 

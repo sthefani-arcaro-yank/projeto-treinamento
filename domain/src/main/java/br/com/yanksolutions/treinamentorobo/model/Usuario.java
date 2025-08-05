@@ -1,4 +1,4 @@
-package br.com.yanksolutions.treinamentorobo.controller.model;
+package br.com.yanksolutions.treinamentorobo.model;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;

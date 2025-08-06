@@ -14,6 +14,7 @@ public class TreinamentoRoboApplication {
         WebDriverManager.chromedriver().setup();
         SpringApplication application = new SpringApplication(TreinamentoRoboApplication.class);
         application.setAdditionalProfiles("dev");
+        application.setHeadless(false);
         application.run(args);
 
     }
